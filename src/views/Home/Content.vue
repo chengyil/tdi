@@ -23,9 +23,18 @@
           </v-row>
           <v-row justify="center">
             <v-col class="text-center">
-              <v-btn outlined class="white--text" :size="buttonSize"
-                >Let's get started with 10% discount</v-btn
-              >
+              <v-dialog v-model="dialog" persistent max-width="300px">
+                <template v-slot:activator="{ on }">
+                  <v-btn
+                    outlined
+                    v-on="on"
+                    class="white--text"
+                    :size="buttonSize"
+                    >Let's get started with 10% discount</v-btn
+                  >
+                </template>
+                <contact-form @close="dialog = false" />
+              </v-dialog>
             </v-col>
           </v-row>
           <v-row justify="center">
@@ -54,7 +63,15 @@
 </template>
 
 <script>
+import ContactForm from "./Form";
+
 export default {
+  components: { ContactForm },
+  data() {
+    return {
+      dialog: false
+    };
+  },
   computed: {
     buttonSize() {
       const size = {
