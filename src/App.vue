@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-navigation-drawer app class="drawer">
+      <side />
+    </v-navigation-drawer>
+
+    <v-content class="ma-0 pa-0">
+      <v-container fluid class="pa-0">
+        <router-view class="pa-0" />
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Side from "@/views/Side";
+export default {
+  name: "App",
+  components: { Side }
+};
+</script>
 
-#nav {
-  padding: 30px;
+<style lang="scss">
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.drawer {
+  background-color: transparent !important;
+  border-color: white !important;
+  border: none !important;
+  border-right: 1px solid white !important;
+  padding-top: 0px;
 }
 </style>
