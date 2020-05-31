@@ -1,14 +1,21 @@
 <template>
   <v-app>
-    <v-navigation-drawer app class="drawer">
+    <v-navigation-drawer
+      v-if="hasDrawer"
+      v-model="drawer"
+      class="drawer"
+      app
+      dark
+    >
       <side />
     </v-navigation-drawer>
-
-    <v-content class="ma-0 pa-0">
-      <v-container fluid class="pa-0">
-        <router-view class="pa-0" />
-      </v-container>
-    </v-content>
+    <v-app-bar color="transparent" elevation="0" app>
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        v-if="hasDrawer"
+      ></v-app-bar-nav-icon>
+    </v-app-bar>
+    <router-view />
   </v-app>
 </template>
 
@@ -16,7 +23,17 @@
 import Side from "@/views/Side";
 export default {
   name: "App",
-  components: { Side }
+  components: { Side },
+  data() {
+    return {
+      drawer: false
+    };
+  },
+  computed: {
+    hasDrawer() {
+      return this.$vuetify.breakpoint.xsAndDown;
+    }
+  }
 };
 </script>
 
@@ -26,10 +43,9 @@ export default {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .drawer {
-  background-color: transparent !important;
-  border-color: white !important;
-  border: none !important;
-  border-right: 1px solid white !important;
   padding-top: 0px;
+}
+
+@media screen and (min-width: 960px) {
 }
 </style>

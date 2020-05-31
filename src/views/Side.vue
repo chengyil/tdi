@@ -2,7 +2,14 @@
   <div>
     <div class="logo d-flex flex-column justify-space-around align-center">
       <v-img src="@/assets/logo.png" contain class="logo-img" />
-      <p class="subtitle-1 text-center pink lighten-4 font-weight-bold">
+      <p
+        class="subtitle-1 text-center lighten-4 font-weight-bold"
+        :class="{
+          'white--text': !light,
+          'grey--text': light,
+          'text--darken-1': light
+        }"
+      >
         Creativity + Business Solution
       </p>
     </div>
@@ -14,12 +21,18 @@
       >
         <template v-slot:activator>
           <v-list-item-content>
-            <v-list-item-title v-text="group.title" class="white--text" />
+            <v-list-item-title
+              v-text="group.title"
+              :class="{ 'white--text': light }"
+            />
           </v-list-item-content>
         </template>
         <v-list-item v-for="item in group.items" :key="item" @click="handle">
           <v-list-item-content>
-            <v-list-item-subtitle v-text="item" class="white--text" />
+            <v-list-item-subtitle
+              v-text="item"
+              :class="{ 'white--text': light }"
+            />
           </v-list-item-content>
         </v-list-item>
       </v-list-group>
@@ -31,6 +44,12 @@
 export default {
   methods: {
     handle() {}
+  },
+  props: {
+    light: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -49,7 +68,6 @@ export default {
           ]
         },
         {
-          active: true,
           title: "Digital",
           items: [
             "Website Design & Development",
@@ -61,7 +79,6 @@ export default {
           ]
         },
         {
-          active: true,
           title: "Creativity",
           items: [
             "Branding",
@@ -94,5 +111,11 @@ div.logo {
 .v-list-item__content {
   padding-top: 5px !important;
   padding-bottom: 5px !important;
+}
+
+.v-list-item--active {
+  .v-list-item__title {
+    color: lightblue;
+  }
 }
 </style>

@@ -1,9 +1,5 @@
 <template>
-  <v-row class="pa-0 ma-0">
-    <v-col class="content">
-      <home-content />
-    </v-col>
-  </v-row>
+  <home-content />
 </template>
 
 <script>
@@ -13,11 +9,3 @@ export default {
   components: { HomeContent }
 };
 </script>
-<style lang="scss" scoped>
-.content {
-  padding-top: 0px;
-  background-image: url("../../assets/bg.png");
-  background-repeat: repeat-x;
-  height: 100vh;
-}
-</style>
