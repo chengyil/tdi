@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     hasDrawer() {
-      return this.$vuetify.breakpoint.xsAndDown;
+      return this.$vuetify.breakpoint.xs;
     }
   }
 };
