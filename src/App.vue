@@ -45,7 +45,4 @@ export default {
 .drawer {
   padding-top: 0px;
 }
-
-@media screen and (min-width: 960px) {
-}
 </style>
