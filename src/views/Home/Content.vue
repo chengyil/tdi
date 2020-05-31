@@ -159,8 +159,7 @@ export default {
       }
     },
     srcset() {
-      const value = `${require("@/assets/bg-1920.png")} 1920w, ${require("@/assets/bg-1024.png")} 1024w, ${require("@/assets/bg-768.png")} 768w,`;
-      return value;
+      return null;
     },
     smAndDown() {
       return this.$vuetify.breakpoint.xs;
