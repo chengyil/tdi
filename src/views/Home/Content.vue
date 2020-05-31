@@ -163,7 +163,7 @@ export default {
       return value;
     },
     smAndDown() {
-      return this.$vuetify.breakpoint.xsAndDown;
+      return this.$vuetify.breakpoint.xs;
     }
   }
 };
